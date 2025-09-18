@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Snoopy Birthday</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('snoopybackground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+  }
+
+  .card {
+    max-width: 400px; margin: 0 auto; background: #fff;
+    border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,.1);
+  }
+
+  .card-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px; background: #f0f0f0;
+  }
+  .card-header h3 { margin: 0; font-size: 1.1rem; }
+
+  .expand-btn {
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 0; background: #007bff; color: #fff; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .expand-btn:hover { background: #0056b3; }
+  .expand-btn:focus { outline: 2px solid #222; outline-offset: 2px; }
+
+  .card-content { padding: 0 16px 16px; }
+  .summary { margin: 8px 0; font-weight: 600; }
+
+  .details { display: none; }
+  .details.show { display: block; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="card-header">
+    <h3>Snoopy Birthday Party</h3>
+    <button class="expand-btn" aria-label="Expand card" aria-expanded="false" aria-controls="party-details">+</button>
+  </div>
+
+  <div class="card-content">
+    <p class="summary">Snoopy Birthday Party</p>
+    <div class="details" id="party-details">
+      <p>Saturday at Charlie Brown's house</p>
+      <p>Contact Cece!!</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const btn = document.querySelector('.expand-btn');
+  const details = document.querySelector('#party-details');
+
+  btn.addEventListener('click', () => {
+    const open = details.classList.toggle('show');
+    btn.textContent = open ? '−' : '+';
+    btn.setAttribute('aria-expanded', open);
+    btn.setAttribute('aria-label', open ? 'Collapse card' : 'Expand card');
+  });
+</script>
+
+</body>
+</html>
