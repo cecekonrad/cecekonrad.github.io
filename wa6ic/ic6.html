@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="gallery-container">
+    <header class="gallery-header"></header>
+    
+    <nav class="gallery-nav">
+      <button>All</button>
+      <button>Nature</button>
+      <button>Architecture</button>
+    </nav>
+    
+    <main class="gallery-grid">
+      <div class="photo-card" data-category="nature"></div>
+      <div class="photo-card" data-category="architecture"></div>
+      <div class="photo-card" data-category="nature"></div>
+      <div class="photo-card featured" data-category="nature"></div>
+      <div class="photo-card" data-category="architecture"></div>
+      <div class="photo-card" data-category="nature"></div>
+    </main>
+    
+    <aside class="gallery-sidebar"></aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
