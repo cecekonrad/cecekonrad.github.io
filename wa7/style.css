@@ -96,12 +96,16 @@ body { overflow-x: hidden; }
   background:#CFB87C;
   color:#000;
 }
-.nav-toggle{display:none}
 
 @media (max-width:720px){
-  .nav-toggle{display:inline-flex;align-items:center;justify-content:center}
+  .main-nav{position:relative}
+  .nav-toggle{display:inline-flex;align-items:center;justify-content:center;z-index:1100}
+  .nav-menu{position:absolute;top:100%;left:0;right:0;z-index:1000}
+  .nav-menu a{display:block;padding:.75rem 1rem}
+  a,button{-webkit-tap-highlight-color:rgba(0,0,0,0.15)}
+  html{-webkit-text-size-adjust:100%}
+  input,textarea,select{font-size:16px}
 }
-
 
 
 

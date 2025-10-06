@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    
+
   var navToggle = document.querySelector(".nav-toggle");
   var navMenu = document.querySelector(".nav-menu");
   if (navToggle && navMenu) {
@@ -102,3 +102,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+var navToggle=document.querySelector(".nav-toggle");
+var navMenu=document.querySelector(".nav-menu");
+if(navMenu&&navToggle){
+  navMenu.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click",function(){
+      navMenu.classList.remove("show");
+      navToggle.setAttribute("aria-expanded","false");
+    });
+  });
+}
