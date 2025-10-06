@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bread+Belonging — Contact</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-contact">
+<nav class="main-nav">
+  <a href="home.html" class="nav-brand">
+    <img src="logo.png" alt="Bread+Belonging Logo">
+  </a>
+  <ul class="nav-menu" id="menu">
+    <li><a href="home.html" aria-current="page">Home</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="theme-buttons">
+    <button onclick="setTheme('light')">Light Theme</button>
+    <button onclick="setTheme('dark')">Dark Theme</button>
+  </div>
+</nav>
+
+<main class="wrapper">
+  <h1>Contact</h1>
+  <p><strong>Address:</strong> 2425 Colorado Avenue, Boulder, CO 80302</p>
+  <p><strong>Email:</strong> info@breadandbelonging.org</p>
+  <p><strong>Instagram:</strong> <a href="#">@breadandbelonging</a></p>
+
+  <form data-js="contact-form">
+    <div class="form-errors" data-js="form-errors" role="alert" tabindex="-1" hidden></div>
+    <label>Name
+      <input name="name" required minlength="2">
+    </label>
+    <label>Email
+      <input name="email" type="email" required>
+    </label>
+    <label>Message
+      <textarea name="message" required minlength="10"></textarea>
+    </label>
+    <button type="submit">Send</button>
+  </form>
+
+  <button id="clearDataBtn" type="button" style="margin-top:1rem">Clear my data</button>
+</main>
+
+<script>
+  function setTheme(theme) {
+    localStorage.setItem('userTheme', theme);
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(theme);
+  }
+
+  window.addEventListener('load', function() {
+    const savedTheme = localStorage.getItem('userTheme') || 'light';
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(savedTheme);
+  });
+
+  document.getElementById('clearDataBtn')?.addEventListener('click', () => {
+    try {
+      localStorage.clear();
+      sessionStorage.clear();
+      setTheme('light');
+      alert('Data cleared.');
+    } catch (e) {
+      console.error(e);
+      alert('Could not clear data.');
+    }
+  });
+</script>
+</body>
+</html>

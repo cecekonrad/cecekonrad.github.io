@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bread+Belonging — Resources</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-resources">
+<nav class="main-nav">
+  <a href="home.html" class="nav-brand">
+    <img src="logo.png" alt="Bread+Belonging Logo">
+  </a>
+  <ul class="nav-menu" id="menu">
+    <li><a href="home.html" aria-current="page">Home</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="theme-buttons">
+    <button onclick="setTheme('light')">Light Theme</button>
+    <button onclick="setTheme('dark')">Dark Theme</button>
+  </div>
+</nav>
+
+<section class="filters wrapper">
+  <div class="filter-row">
+    <label for="filter">Search</label>
+    <input id="filter" type="search" data-js="filter-input" placeholder="Type to filter">
+    <span data-js="filter-count" role="status" aria-live="polite"></span>
+  </div>
+</section>
+
+<section class="list wrapper">
+  <div class="resource-grid" data-js="filter-list">
+    <article class="card" data-tag="food pantry campus">
+      <h3>Campus Food Pantry</h3>
+      <p>No ID required. Open M/W/F.</p>
+    </article>
+    <article class="card" data-tag="housing emergency shelter">
+      <h3>Emergency Housing Aid</h3>
+      <p>Short-term support, 24–48h response.</p>
+    </article>
+    <article class="card" data-tag="mental health counseling">
+      <h3>Student Counseling Center</h3>
+      <p>Free short-term counseling; referrals available.</p>
+    </article>
+    <article class="card" data-tag="transport bus pass campus">
+      <h3>RTD Student Pass</h3>
+      <p>Unlimited local rides with student ID.</p>
+    </article>
+  </div>
+</section>
+
+<main class="wrapper">
+  <button id="clearDataBtn" type="button" style="margin-top:1rem">Clear my data</button>
+</main>
+
+<script>
+  function setTheme(theme) {
+    localStorage.setItem('userTheme', theme);
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(theme);
+  }
+
+  window.addEventListener('load', function() {
+    const savedTheme = localStorage.getItem('userTheme') || 'light';
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(savedTheme);
+  });
+
+  document.getElementById('clearDataBtn')?.addEventListener('click', function () {
+    try {
+      localStorage.clear();
+      sessionStorage.clear();
+      if (typeof setTheme === 'function') {
+        setTheme('light');
+      } else {
+        document.body.classList.remove('dark');
+        document.body.classList.add('light');
+      }
+      alert('Data cleared.');
+    } catch (e) {
+      alert('Could not clear data.');
+    }
+  });
+</script>
+</body>
+</html>
