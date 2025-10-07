@@ -35,8 +35,6 @@
   </div>
 </section>
 
-
-
 <section class="list wrapper">
   <div class="resource-grid" data-js="filter-list">
     <article class="card" data-tag="food pantry campus">
@@ -61,6 +59,14 @@
 <main class="wrapper">
   <button id="clearDataBtn" type="button" style="margin-top:1rem">Clear my data</button>
 </main>
+
+<button id="fabMenuBtn" aria-controls="fabMenu" aria-expanded="false">☰</button>
+<div id="fabMenu" hidden>
+  <a href="home.html">Home</a>
+  <a href="resources.html">Resources</a>
+  <a href="events.html">Events</a>
+  <a href="contact.html">Contact</a>
+</div>
 
 <script>
   function setTheme(theme) {
@@ -90,6 +96,18 @@
       alert('Could not clear data.');
     }
   });
+
+  (function(){
+    var b=document.getElementById('fabMenuBtn');
+    var m=document.getElementById('fabMenu');
+    if(!b||!m)return;
+    function open(){m.hidden=false;b.setAttribute('aria-expanded','true');}
+    function close(){m.hidden=true;b.setAttribute('aria-expanded','false');}
+    b.addEventListener('click',function(){m.hidden?open():close();});
+    m.addEventListener('click',function(e){if(e.target===m)close();});
+    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  })();
 </script>
 </body>
 </html>

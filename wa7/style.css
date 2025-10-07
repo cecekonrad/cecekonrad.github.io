@@ -8,7 +8,7 @@ body{margin:0;font:16px/1.5 system-ui,Arial,sans-serif;color:#111;background:#ff
 .nav-menu{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
 .nav-menu a{color:#fff;text-decoration:none;padding:.25rem .5rem;border-radius:4px}
 .nav-menu a[aria-current="page"]{background:#CFB87C;color:#000}
-.nav-toggle{background:none;border:1px solid #CFB87C;border-radius:8px;padding:.35rem .5rem}
+.nav-toggle{background:none;border:1px solid #CFB87C;border-radius:8px;padding:.35rem .5rem;display:none}
 .nav-toggle span{display:block;width:20px;height:2px;background:#CFB87C;margin:3px 0}
 @media (max-width:720px){
   .nav-menu{display:none;flex-direction:column;padding:1rem;border-top:1px solid #CFB87C;background:#000}
@@ -83,19 +83,8 @@ img, video, canvas, svg { max-width: 100%; height: auto; }
 iframe { max-width: 100%; }
 body { overflow-x: hidden; }
 
-#clearDataBtn {
-  background:#000;
-  color:#CFB87C;
-  border:none;
-  padding:.6rem 1rem;
-  border-radius:6px;
-  cursor:pointer;
-  margin-top:1rem;
-}
-#clearDataBtn:hover {
-  background:#CFB87C;
-  color:#000;
-}
+#clearDataBtn {background:#000;color:#CFB87C;border:none;padding:.6rem 1rem;border-radius:6px;cursor:pointer;margin-top:1rem}
+#clearDataBtn:hover {background:#CFB87C;color:#000}
 
 @media (max-width:720px){
   .main-nav{position:relative}
@@ -106,6 +95,12 @@ body { overflow-x: hidden; }
   html{-webkit-text-size-adjust:100%}
   input,textarea,select{font-size:16px}
 }
+
+#fabMenuBtn{position:fixed;right:14px;bottom:14px;z-index:5000;width:56px;height:56px;border-radius:16px;border:1px solid #000;background:#CFB87C;color:#000;font-size:22px;line-height:1;display:inline-flex;align-items:center;justify-content:center}
+#fabMenu{position:fixed;inset:0;z-index:4999;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center}
+#fabMenu[hidden]{display:none}
+#fabMenu a{display:block;margin:.6rem 0;padding:1rem 1.25rem;min-width:240px;text-align:center;text-decoration:none;border-radius:12px;border:1px solid #CFB87C;background:#000;color:#CFB87C;font-weight:600;font-size:1.1rem}
+#fabMenu a:active{transform:scale(.98)}
 
 
 

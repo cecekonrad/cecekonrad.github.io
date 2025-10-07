@@ -27,7 +27,7 @@
   <span></span><span></span><span></span>
 </button>
 
-<main class="wrapper">
+<main class="wrapper" id="main">
   <h1>Contact</h1>
   <p><strong>Address:</strong> 2425 Colorado Avenue, Boulder, CO 80302</p>
   <p><strong>Email:</strong> info@breadandbelonging.org</p>
@@ -49,6 +49,14 @@
 
   <button id="clearDataBtn" type="button" style="margin-top:1rem">Clear my data</button>
 </main>
+
+<button id="fabMenuBtn" aria-controls="fabMenu" aria-expanded="false">☰</button>
+<div id="fabMenu" hidden>
+  <a href="home.html">Home</a>
+  <a href="resources.html">Resources</a>
+  <a href="events.html">Events</a>
+  <a href="contact.html">Contact</a>
+</div>
 
 <script>
   function setTheme(theme) {
@@ -74,6 +82,37 @@
       alert('Could not clear data.');
     }
   });
+
+  (function(){
+    var b=document.getElementById('fabMenuBtn');
+    var m=document.getElementById('fabMenu');
+    if(b&&m){
+      function open(){m.hidden=false;b.setAttribute('aria-expanded','true')}
+      function close(){m.hidden=true;b.setAttribute('aria-expanded','false')}
+      b.addEventListener('click',function(){m.hidden?open():close()});
+      m.addEventListener('click',function(e){if(e.target===m) close()});
+      m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape') close()});
+    }
+  })();
+
+  (function(){
+    var t=document.querySelector('.nav-toggle');
+    var menu=document.getElementById('menu');
+    if(t&&menu){
+      t.addEventListener('click',function(){
+        menu.classList.toggle('show');
+        var expanded=t.getAttribute('aria-expanded')==='true';
+        t.setAttribute('aria-expanded', String(!expanded));
+      });
+      menu.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click',function(){
+          menu.classList.remove('show');
+          t.setAttribute('aria-expanded','false');
+        });
+      });
+    }
+  })();
 </script>
 </body>
 </html>
