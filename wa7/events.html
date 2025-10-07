@@ -30,9 +30,21 @@
   <a href="contact.html">Contact</a>
 </div>
 
-<button class="nav-toggle" aria-controls="menu" aria-expanded="false" type="button">
-  <span></span><span></span><span></span>
-</button>
+<script>
+(function(){
+  var b=document.getElementById('fabMenuBtn');
+  var m=document.getElementById('fabMenu');
+  if(!b||!m)return;
+  function open(){m.hidden=false;b.setAttribute('aria-expanded','true');}
+  function close(){m.hidden=true;b.setAttribute('aria-expanded','false');}
+  b.addEventListener('click',function(){m.hidden?open():close()});
+  m.addEventListener('click',function(e){ if(e.target===m) close(); });
+  m.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',close); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+</div>
+
 
 <main class="wrapper">
   <h1>Events</h1>
