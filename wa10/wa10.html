@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Quote Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>Random Quote Generator</header>
+
+    <section class="quotes">
+      <div class="quote-text" id="js-quote-text"></div>
+      <div class="quote-text" id="js-answer-text"></div>
+    </section>
+
+    <section class="controls">
+      <button type="button" id="js-new-quote" class="new-quote button">Generate a new quote</button>
+      <button type="button" id="js-show-answer" class="answer button">Show author</button>
+    </section>
+
+    <section class="writeup">
+      <p>
+        I used the Forismatic API through a proxy to display random quotes and styled the page using my own color palette and layout. I added a simple animation so the author fades in when the “Show Author” button is clicked, which makes the quote reveal feel smoother and more interactive. For my critique project, I could imagine using an API that shows real-time social media trends or algorithmic data to explore how platforms shape what people see and how users interact with that content over time.
+      </p>
+    </section>
+  </div>
+
+  <script>
+    const q=document.getElementById("js-quote-text");
+    const a=document.getElementById("js-answer-text");
+    const bNew=document.getElementById("js-new-quote");
+    const bShow=document.getElementById("js-show-answer");
+    const base="http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en";
+    function proxy(){return "https://api.allorigins.win/raw?url="+encodeURIComponent(base+"&_="+Date.now())}
+    async function getQuote(){
+      bNew.disabled=true;
+      bShow.disabled=true;
+      a.style.visibility="hidden";
+      q.textContent="Loading...";
+      a.textContent="";
+      try{
+        const r=await fetch(proxy(),{cache:"no-store",mode:"cors"});
+        if(!r.ok)throw new Error();
+        const t=await r.text();
+        const j=JSON.parse(t.replace(/\\'/g,"'"));
+        const text=(j.quoteText||"").trim()||"No quote.";
+        const author=(j.quoteAuthor||"Unknown").trim()||"Unknown";
+        q.textContent=`"${text}"`;
+        a.textContent=`— ${author}`;
+        bShow.disabled=false;
+      }catch(e){
+        q.textContent="Couldn’t load a quote. Try again.";
+        a.textContent="";
+      }finally{
+        bNew.disabled=false;
+      }
+    }
+    function showAuthor(){a.style.visibility="visible"}
+    bNew.addEventListener("click",getQuote);
+    bShow.addEventListener("click",showAuthor);
+    getQuote();
+  </script>
+</body>
+</html>
