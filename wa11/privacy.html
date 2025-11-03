@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy · Book finder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="wrap header">
+    <h1 class="brand">Book Finder</h1>
+    <nav class="nav">
+      <a href="index.html">search</a>
+      <a href="favorites.html">favorites</a>
+      <a href="privacy.html" aria-current="page">privacy</a>
+    </nav>
+  </header>
+
+  <main class="wrap narrow">
+    <h2>data practices</h2>
+    <div class="panel">
+      <ul>
+        <li>search terms are sent to open library to fetch results</li>
+        <li>favorites are saved in your browser’s local storage</li>
+        <li>favorites are never shared with any server</li>
+        <li>use export to download, delete all to erase</li>
+      </ul>
+    </div>
+
+    <h2>reflection </h2>
+    <div class="panel">
+      <p>For this project, I created <em>Book Finder</em>, a simple web app that uses the Open Library API to search and display books. I chose this API because it is free, public, and does not require a key, making it easy to integrate. My goal was to design something clean and minimal while giving users control over their personal data.</p>
+
+      <p>The user control feature I implemented is local-only favorites. When users save books, that data stays on their own device through localStorage instead of being uploaded anywhere online. I also added clear options to export the list as a JSON file or delete all saved favorites, so users can take or remove their data at any time.</p>
+
+      <p>This feature gives people more agency than most apps, which usually store lists or profiles on external servers. Here, nothing leaves the user’s browser. I also included a separate privacy page that clearly explains what data is collected with search and how that determines what stays private.</p>
+
+      <p>One challenge I faced was handling slow API responses gracefully. I solved this by adding timeout messages and empty-result feedback so users always understand what is happening on screen.</p>
+    </section>
+  </main>
+</body>
+</html>
