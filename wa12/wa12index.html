@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book Finder · Open Library</title>
+  <link rel="preconnect" href="https://covers.openlibrary.org" crossorigin>
+  <link rel="stylesheet" href="wa12.css">
+</head>
+<body>
+  <header class="wrap header">
+    <h1 class="brand">Book Finder</h1>
+    <nav class="nav">
+      <a href="index.html" aria-current="page">search</a>
+      <a href="favorites.html">favorites</a>
+      <a href="privacy.html">privacy</a>
+    </nav>
+  </header>
+
+  <main class="wrap grid">
+    <section>
+      <h2 id="search-heading">search books</h2>
+      <form id="searchForm" class="row" role="search" aria-labelledby="search-heading">
+        <label for="q" class="sr-only">Search books</label>
+        <input id="q" type="text" placeholder="title, author, or keyword" required>
+        <button type="submit" class="btn primary">search</button>
+        <button type="button" id="clearBtn" class="btn ghost">clear</button>
+      </form>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <div id="results" class="cards" aria-live="polite" aria-busy="false"></div>
+    </section>
+
+    <aside>
+      <h2>quick tips</h2>
+      <ul class="tiny muted">
+        <li>try author: toni morrison</li>
+        <li>try title: beloved</li>
+        <li>press / to focus search</li>
+      </ul>
+      <div class="panel">
+        <p class="tiny">favorites stay on this device. export or delete anytime.</p>
+        <a class="btn" href="favorites.html">open favorites</a>
+      </div>
+    </aside>
+  </main>
+
+  <template id="card-tpl">
+    <article class="card">
+      <img class="cover" alt="">
+      <div class="meta">
+        <h3 class="title"></h3>
+        <p class="byline"></p>
+        <div class="row">
+          <button class="btn add">add to favorites</button>
+          <a class="btn ghost more" target="_blank" rel="noopener">details</a>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="wa12.js" defer></script>
+</body>
+</html>

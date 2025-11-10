@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Favorites · Petal Reads</title>
+  <link rel="stylesheet" href="wa12.css">
+</head>
+<body>
+  <header class="wrap header">
+    <h1 class="brand">Book Finder</h1>
+    <nav class="nav">
+      <a href="index.html">search</a>
+      <a href="favorites.html" aria-current="page">favorites</a>
+      <a href="privacy.html">privacy</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="row">
+      <button id="exportBtn" class="btn">export (.json)</button>
+      <button id="deleteAllBtn" class="btn danger">delete all</button>
+    </section>
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <section id="favorites" class="cards" aria-live="polite"></section>
+  </main>
+
+  <template id="fav-tpl">
+    <article class="card">
+      <img class="cover" alt="">
+      <div class="meta">
+        <h3 class="title"></h3>
+        <p class="byline"></p>
+        <div class="row">
+          <button class="btn danger remove">remove</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="wa12.js" defer></script>
+</body>
+</html>
