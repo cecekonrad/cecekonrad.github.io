@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Favorites · Petal Reads</title>
+  <link rel="stylesheet" href="wa14ic.css">
+</head>
+<body>
+
+<header class="wrap header">
+  <h1 class="brand">Book Finder</h1>
+  <nav class="nav">
+    <a href="wa14icindex.html">Search</a>
+    <a href="wa14icfavorites.html" aria-current="page">Favorites</a>
+    <a href="wa14icprivacy.html">Privacy</a>
+  </nav>
+</header>
+
+<div class="dog-wrapper">
+  <div class="container">
+    <div class="dog">
+      <div class="dog-head">
+        <div class="dog-ears ears-left"></div>
+        <div class="dog-ears ears-right"></div>
+        <div class="dog-eyes"></div>
+        <div class="dog-mouth">
+          <div class="dog-nose"></div>
+          <div class="dog-tongue"></div>
+        </div>
+      </div>
+      <div class="dog-tail"></div>
+      <div class="dog-body">
+        <div class="dog-foot"></div>
+      </div>
+      <div class="ball"></div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section class="row">
+    <button id="exportBtn" class="btn">export (.json)</button>
+    <button id="deleteAllBtn" class="btn danger">delete all</button>
+  </section>
+
+  <div id="status" class="status" role="status" aria-live="polite"></div>
+  <section id="favorites" class="cards" aria-live="polite"></section>
+</main>
+
+<template id="fav-tpl">
+  <article class="card">
+    <img class="cover" alt="">
+    <div class="meta">
+      <h3 class="title"></h3>
+      <p class="byline"></p>
+      <div class="row">
+        <button class="btn danger remove">remove</button>
+      </div>
+    </div>
+  </article>
+</template>
+
+<script src="wa14ic.js" defer></script>
+</body>
+</html>

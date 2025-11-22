@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book Finder · Petal Reads</title>
+  <link rel="stylesheet" href="wa14ic.css">
+  <link rel="preconnect" href="https://covers.openlibrary.org" crossorigin>
+</head>
+<body>
+
+<header class="wrap header">
+  <h1 class="brand">Book Finder</h1>
+  <nav class="nav">
+    <a href="wa14icindex.html" aria-current="page">Search</a>
+    <a href="wa14icfavorites.html">Favorites</a>
+    <a href="wa14icprivacy.html">Privacy</a>
+  </nav>
+</header>
+
+<div class="dog-wrapper">
+  <div class="container">
+    <div class="dog">
+      <div class="dog-head">
+        <div class="dog-ears ears-left"></div>
+        <div class="dog-ears ears-right"></div>
+        <div class="dog-eyes"></div>
+        <div class="dog-mouth">
+          <div class="dog-nose"></div>
+          <div class="dog-tongue"></div>
+        </div>
+      </div>
+      <div class="dog-tail"></div>
+      <div class="dog-body">
+        <div class="dog-foot"></div>
+      </div>
+      <div class="ball"></div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap grid">
+  <section>
+    <h2 id="search-heading">Search books</h2>
+    <form id="searchForm" class="row" role="search" aria-labelledby="search-heading">
+      <label for="q" class="sr-only">Search books</label>
+      <input id="q" type="text" placeholder="title, author, or keyword" required>
+      <button type="submit" class="btn primary">search</button>
+      <button type="button" id="clearBtn" class="btn ghost">clear</button>
+    </form>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <div id="results" class="cards" aria-live="polite" aria-busy="false"></div>
+  </section>
+
+  <aside>
+    <h2>Quick tips</h2>
+    <ul class="tiny muted">
+      <li>Try author: Toni Morrison</li>
+      <li>Try title: Beloved</li>
+      <li>Press / to focus search</li>
+    </ul>
+    <div class="panel">
+      <p class="tiny">Favorites stay on this device. Export or delete anytime.</p>
+      <a class="btn" href="wa14ic_favorites.html">Open favorites</a>
+    </div>
+  </aside>
+</main>
+
+<template id="card-tpl">
+  <article class="card">
+    <img class="cover" alt="">
+    <div class="meta">
+      <h3 class="title"></h3>
+      <p class="byline"></p>
+      <div class="row">
+        <button class="btn add">Add to favorites</button>
+        <a class="btn ghost more" target="_blank" rel="noopener">details</a>
+      </div>
+    </div>
+  </article>
+</template>
+
+<script src="wa14ic.js" defer></script>
+</body>
+</html>
